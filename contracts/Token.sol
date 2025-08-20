@@ -11,4 +11,8 @@ contract Token is ERC20 {
     ) ERC20(name, symbol) {
         _mint(msg.sender, supply);
     }
+
+    function mint(uint256 supply) public {
+        _mint(msg.sender, supply);
+    }
 }

@@ -1,131 +1,593 @@
 {
-  "USDC": {
+  "WETH": {
     "localhost": {
-      "address": "0xF85895D097B2C25946BB95C4d11E2F3c035F8f0C",
+      "address": "0x56fC17a65ccFEC6B7ad0aDe9BD9416CB365B9BE8",
       "deployer": "0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266",
       "decimals": 18,
-      "totalSupply": "1000000000000"
+      "totalSupply": "0",
+      "contractType": "WETH"
+    },
+    "holesky": {
+      "address": "0x511a032eB4a4BF413F5062744417E78B85aAd9fb",
+      "deployer": "0x74D75f13c39014Dd1515758bF66ba46571B73F2E",
+      "decimals": 18,
+      "totalSupply": "1000000000000000000000000"
+    },
+    "arbitrum_sepolia": {
+      "address": "0xf828427bEb19E4908b88CaB43266e07e3397f52e",
+      "deployer": "0x74D75f13c39014Dd1515758bF66ba46571B73F2E",
+      "decimals": 18,
+      "totalSupply": "1000000000000000000000000"
     }
   },
-  "USDT": {
+  "USDC": {
     "localhost": {
-      "address": "0x47c05BCCA7d57c87083EB4e586007530eE4539e9",
+      "address": "0x2Dd78Fd9B8F40659Af32eF98555B8b31bC97A351",
       "deployer": "0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266",
+      "decimals": 18,
+      "totalSupply": "1000000000000",
+      "contractType": "ERC20"
+    },
+    "holesky": {
+      "address": "0x63459a2699827c8eED36633e28762dA67C324a19",
+      "deployer": "0x74D75f13c39014Dd1515758bF66ba46571B73F2E",
+      "decimals": 18,
+      "totalSupply": "1000000000000"
+    },
+    "arbitrum_sepolia": {
+      "address": "0x76Ab77117FDa97199f6E7f4Cd1acE39e5Ec9f932",
+      "deployer": "0x74D75f13c39014Dd1515758bF66ba46571B73F2E",
       "decimals": 18,
       "totalSupply": "1000000000000"
     }
   },
   "DAI": {
     "localhost": {
-      "address": "0x0b27a79cb9C0B38eE06Ca3d94DAA68e0Ed17F953",
+      "address": "0x2625760C4A8e8101801D3a48eE64B2bEA42f1E96",
       "deployer": "0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266",
       "decimals": 18,
-      "totalSupply": "999999999999999983222784"
-    }
-  },
-  "WETH": {
-    "localhost": {
-      "address": "0x2b639Cc84e1Ad3aA92D4Ee7d2755A6ABEf300D72",
-      "deployer": "0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266",
+      "totalSupply": "1000000000000000000000000",
+      "contractType": "ERC20"
+    },
+    "holesky": {
+      "address": "0x88cFc12Ee3A233C960a7148229FdF7381792490B",
+      "deployer": "0x74D75f13c39014Dd1515758bF66ba46571B73F2E",
       "decimals": 18,
-      "totalSupply": "999999999999999983222784"
+      "totalSupply": "1000000000000000000000000"
+    },
+    "arbitrum_sepolia": {
+      "address": "0x3b49C1d1323f93C01E5b6b6d3aBee6c3Cd187Da8",
+      "deployer": "0x74D75f13c39014Dd1515758bF66ba46571B73F2E",
+      "decimals": 18,
+      "totalSupply": "1000000000000000000000000"
     }
   },
   "WBTC": {
     "localhost": {
-      "address": "0x7bdd3b028C4796eF0EAf07d11394d0d9d8c24139",
+      "address": "0xFE5f411481565fbF70D8D33D992C78196E014b90",
       "deployer": "0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266",
+      "decimals": 18,
+      "totalSupply": "100000000000000",
+      "contractType": "ERC20"
+    },
+    "holesky": {
+      "address": "0xfee200dD015ED18e55B6858fA4E2A7b8394AEA8a",
+      "deployer": "0x74D75f13c39014Dd1515758bF66ba46571B73F2E",
+      "decimals": 18,
+      "totalSupply": "100000000000000"
+    },
+    "arbitrum_sepolia": {
+      "address": "0xcCd80E752528AcA23D92EDa658706F3608C3Ba5a",
+      "deployer": "0x74D75f13c39014Dd1515758bF66ba46571B73F2E",
       "decimals": 18,
       "totalSupply": "100000000000000"
     }
   },
-  "UniswapV2Factory": {
+  "ARB": {
     "localhost": {
-      "address": "0x408F924BAEC71cC3968614Cb2c58E155A35e6890",
-      "deployer": "0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266"
+      "address": "0xD6b040736e948621c5b6E0a494473c47a6113eA8",
+      "deployer": "0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266",
+      "decimals": 18,
+      "totalSupply": "1000000000000000000000000",
+      "contractType": "ERC20"
+    },
+    "holesky": {
+      "address": "0xB845a6dbeb0BEF7882070A242e97da1E434FC1DA",
+      "deployer": "0x74D75f13c39014Dd1515758bF66ba46571B73F2E",
+      "decimals": 18,
+      "totalSupply": "1000000000000000000000000"
+    },
+    "arbitrum_sepolia": {
+      "address": "0xEeB865b76F5CB4899a3F5D759cFb305020e141e6",
+      "deployer": "0x74D75f13c39014Dd1515758bF66ba46571B73F2E",
+      "decimals": 18,
+      "totalSupply": "1000000000000000000000000"
     }
   },
-  "UniswapV2Router02": {
+  "USDT": {
     "localhost": {
-      "address": "0x773330693cb7d5D233348E25809770A32483A940",
-      "deployer": "0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266"
+      "address": "0x139e1D41943ee15dDe4DF876f9d0E7F85e26660A",
+      "deployer": "0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266",
+      "decimals": 18,
+      "totalSupply": "1000000000000",
+      "contractType": "ERC20"
+    },
+    "holesky": {
+      "address": "0x2094E2C1154293D872aee71CCe5C493374c92b34",
+      "deployer": "0x74D75f13c39014Dd1515758bF66ba46571B73F2E",
+      "decimals": 18,
+      "totalSupply": "1000000000000"
+    },
+    "arbitrum_sepolia": {
+      "address": "0x2757f8450eC84e3CaDDaeA981333F431Cb2E7a16",
+      "deployer": "0x74D75f13c39014Dd1515758bF66ba46571B73F2E",
+      "decimals": 18,
+      "totalSupply": "1000000000000"
     }
   },
   "Pairs": {
     "localhost": {
-      "USDC-USDT": "0x9b414aB01bAD60Cd566640C9af469fc606979a1f",
-      "USDC-DAI": "0x143517BDC401bDCF5d99263C7f1e3236FFA3D9b0",
-      "USDC-WETH": "0x0D1876D45caa33a54AC20e266927d331284D0c0f",
-      "USDC-WBTC": "0x5623a6E6373A8A7c49AfcE6aCF2138b7FdDeC586",
-      "USDT-DAI": "0x6FC24DDd904F49D9f8087B46e443E3367705b6bA",
-      "USDT-WETH": "0x02Ec8AB9B1426b129BEf8afE6A29Fd947cAEdbcC",
-      "USDT-WBTC": "0xc4deD2C6d0Af49dcb15b967F36F239126F90A294",
-      "DAI-WETH": "0x19BA051f9215738d0BffeBD40b899Af503E53cdc",
-      "DAI-WBTC": {
-        "address": "0x2aD713Db9811e463065be72A6f2CceFf75268562",
-        "priceA": "0.99981847",
-        "priceB": "122087.35",
-        "tokenA": "0x3f9A1B67F3a3548e0ea5c9eaf43A402d12b6a273",
-        "tokenB": "0xFD6D23eE2b6b136E34572fc80cbCd33E9787705e",
-        "symbolA": "DAI",
-        "symbolB": "WBTC"
+      "WETH-USDC": {
+        "address": "0x9b414aB01bAD60Cd566640C9af469fc606979a1f",
+        "priceA": "3912.11326159",
+        "priceB": "0.99985679",
+        "tokenA": "0x0165878A594ca255338adfa4d48449f69242Eb8F",
+        "tokenB": "0xa513E6E4b8f2a923D98304ec87F64353C4D5C853",
+        "symbolA": "WETH",
+        "symbolB": "USDC"
+      },
+      "WETH-DAI": {
+        "address": "0x0398885f67570bb8e573833F4caf1C6b0DDB63e5",
+        "priceA": "4184.30689784",
+        "priceB": "0.99984983",
+        "tokenA": "0x1fA02b2d6A771842690194Cf62D91bdd92BfE28d",
+        "tokenB": "0x04C89607413713Ec9775E14b954286519d836FEf",
+        "symbolA": "WETH",
+        "symbolB": "DAI"
       },
       "WETH-WBTC": {
-        "address": "0xbA3120b2A7E24990785596e558a0ad41660f6C89",
-        "priceA": "3025.14",
-        "priceB": "122087.35",
-        "tokenA": "0xeC827421505972a2AE9C320302d3573B42363C26",
-        "tokenB": "0xFD6D23eE2b6b136E34572fc80cbCd33E9787705e",
+        "address": "0xc9E42f07C9091E58D24a8407182322E175EA6d3C",
+        "priceA": "4184.30689784",
+        "priceB": "113620.91",
+        "tokenA": "0x1fA02b2d6A771842690194Cf62D91bdd92BfE28d",
+        "tokenB": "0x4C4a2f8c81640e47606d3fd77B353E87Ba015584",
         "symbolA": "WETH",
         "symbolB": "WBTC"
       },
-      "DAI-USDC": "0x69E16881BAa0dB4B718A50E52Bf4642d96376390",
-      "USDC-ARB": "0x767e12ACa13abAF87DE6E63b077a0Dd4792b32FD",
-      "USDT-ARB": "0xF5032f81cC346E2d782e9b7080Ac17873556d0FC",
-      "DAI-ARB": {
-        "address": "0x30C8178F63A1eAA19188EE2aDd7e8a76b30951f6",
-        "priceA": "0.99981847",
-        "priceB": "0.42208028",
-        "tokenA": "0x0b27a79cb9C0B38eE06Ca3d94DAA68e0Ed17F953",
-        "tokenB": "0xB468647B04bF657C9ee2de65252037d781eABafD",
-        "symbolA": "DAI",
-        "symbolB": "ARB"
-      },
       "WETH-ARB": {
-        "address": "0xa8f800B33D94806e71C44a95b9699b252083D52b",
-        "priceA": "3025.14",
-        "priceB": "0.42208028",
-        "tokenA": "0x2b639Cc84e1Ad3aA92D4Ee7d2755A6ABEf300D72",
-        "tokenB": "0xB468647B04bF657C9ee2de65252037d781eABafD",
+        "address": "0x099FAC7F9C58A9Fe4E7E3969c9f75ead5927e690",
+        "priceA": "4184.30689784",
+        "priceB": "0.4859737",
+        "tokenA": "0x1fA02b2d6A771842690194Cf62D91bdd92BfE28d",
+        "tokenB": "0x21dF544947ba3E8b3c32561399E88B52Dc8b2823",
         "symbolA": "WETH",
         "symbolB": "ARB"
       },
+      "WETH-USDT": {
+        "address": "0xFB84983ff8e9AbdB2ab3e5380F3490A1FDf674fA",
+        "priceA": "4184.30689784",
+        "priceB": "1.00010001",
+        "tokenA": "0x1fA02b2d6A771842690194Cf62D91bdd92BfE28d",
+        "tokenB": "0x2E2Ed0Cfd3AD2f1d34481277b3204d807Ca2F8c2",
+        "symbolA": "WETH",
+        "symbolB": "USDT"
+      },
+      "USDC-DAI": {
+        "address": "0xDA3664D29e1D9704Bb87D6daCDA9Eada6BFB9499",
+        "priceA": "0.99992187",
+        "priceB": "0.99984983",
+        "tokenA": "0x2Dd78Fd9B8F40659Af32eF98555B8b31bC97A351",
+        "tokenB": "0x2625760C4A8e8101801D3a48eE64B2bEA42f1E96",
+        "symbolA": "USDC",
+        "symbolB": "DAI"
+      },
+      "USDC-WBTC": {
+        "address": "0xAedc8adCb4370Eb79Ce6D43BB34dff4eC63d8CfC",
+        "priceA": "0.99992187",
+        "priceB": "113157.494895",
+        "tokenA": "0x2Dd78Fd9B8F40659Af32eF98555B8b31bC97A351",
+        "tokenB": "0xFE5f411481565fbF70D8D33D992C78196E014b90",
+        "symbolA": "USDC",
+        "symbolB": "WBTC"
+      },
+      "USDC-ARB": {
+        "address": "0x67BFE6ce708Ca2138524fe124FECC57855dfF9FC",
+        "priceA": "0.99992187",
+        "priceB": "0.48174187",
+        "tokenA": "0x2Dd78Fd9B8F40659Af32eF98555B8b31bC97A351",
+        "tokenB": "0xD6b040736e948621c5b6E0a494473c47a6113eA8",
+        "symbolA": "USDC",
+        "symbolB": "ARB"
+      },
+      "USDC-USDT": {
+        "address": "0xca2221B636e4aaa825ABd68f2E5DAb870a1216aD",
+        "priceA": "0.99992187",
+        "priceB": "1.0000721",
+        "tokenA": "0x2Dd78Fd9B8F40659Af32eF98555B8b31bC97A351",
+        "tokenB": "0x139e1D41943ee15dDe4DF876f9d0E7F85e26660A",
+        "symbolA": "USDC",
+        "symbolB": "USDT"
+      },
+      "DAI-WBTC": {
+        "address": "0x63A944DcC531F316c1793991Be832B8eF0aB0d99",
+        "priceA": "0.99984983",
+        "priceB": "113157.494895",
+        "tokenA": "0x2625760C4A8e8101801D3a48eE64B2bEA42f1E96",
+        "tokenB": "0xFE5f411481565fbF70D8D33D992C78196E014b90",
+        "symbolA": "DAI",
+        "symbolB": "WBTC"
+      },
+      "DAI-ARB": {
+        "address": "0x3578739ecfF6a8f64d9144F826bc57C1ca70FB1D",
+        "priceA": "0.99984983",
+        "priceB": "0.48174187",
+        "tokenA": "0x2625760C4A8e8101801D3a48eE64B2bEA42f1E96",
+        "tokenB": "0xD6b040736e948621c5b6E0a494473c47a6113eA8",
+        "symbolA": "DAI",
+        "symbolB": "ARB"
+      },
+      "DAI-USDT": {
+        "address": "0x4ca7653BE0EBFCe98D3013a7ACB615C783Ae7EdF",
+        "priceA": "0.99984983",
+        "priceB": "1.0000721",
+        "tokenA": "0x2625760C4A8e8101801D3a48eE64B2bEA42f1E96",
+        "tokenB": "0x139e1D41943ee15dDe4DF876f9d0E7F85e26660A",
+        "symbolA": "DAI",
+        "symbolB": "USDT"
+      },
       "WBTC-ARB": {
-        "address": "0xf2bA64c18dd38d28c8F65430d8a3124CC25A3A93",
-        "priceA": "122087.35",
-        "priceB": "0.42208028",
-        "tokenA": "0xFD6D23eE2b6b136E34572fc80cbCd33E9787705e",
-        "tokenB": "0x4DAf17c8142A483B2E2348f56ae0F2cFDAe22ceE",
+        "address": "0x69E3B82ad8DdFdC30cb211A5Ad4a9Bf20AF2edb0",
+        "priceA": "113157.494895",
+        "priceB": "0.48174187",
+        "tokenA": "0xFE5f411481565fbF70D8D33D992C78196E014b90",
+        "tokenB": "0xD6b040736e948621c5b6E0a494473c47a6113eA8",
         "symbolA": "WBTC",
         "symbolB": "ARB"
       },
+      "WBTC-USDT": {
+        "address": "0x4dD426d115d3A733E78310c7fDC1452Cd0cb69E1",
+        "priceA": "113157.494895",
+        "priceB": "1.0000721",
+        "tokenA": "0xFE5f411481565fbF70D8D33D992C78196E014b90",
+        "tokenB": "0x139e1D41943ee15dDe4DF876f9d0E7F85e26660A",
+        "symbolA": "WBTC",
+        "symbolB": "USDT"
+      },
+      "ARB-USDT": {
+        "address": "0xb2495E578afb4F53C900802Ad7d37E26E237e713",
+        "priceA": "0.48174187",
+        "priceB": "1.0000721",
+        "tokenA": "0xD6b040736e948621c5b6E0a494473c47a6113eA8",
+        "tokenB": "0x139e1D41943ee15dDe4DF876f9d0E7F85e26660A",
+        "symbolA": "ARB",
+        "symbolB": "USDT"
+      },
+      "USDC-WETH": {
+        "address": "0x1f3c5df8b3857885e86A959c968de2Bc0547c5a4",
+        "priceA": "0.99999628",
+        "priceB": "4184.30689784",
+        "tokenA": "0x5081a39b8A5f0E35a8D959395a630b68B74Dd30f",
+        "tokenB": "0x1fA02b2d6A771842690194Cf62D91bdd92BfE28d",
+        "symbolA": "USDC",
+        "symbolB": "WETH"
+      }
+    },
+    "holesky": {
+      "USDC-WETH": {
+        "address": "0x1f1536A562837CE6179C87D788dD7606377E5D09",
+        "priceA": "0.99987409",
+        "priceB": "4631.67",
+        "tokenA": "0x63459a2699827c8eED36633e28762dA67C324a19",
+        "tokenB": "0x511a032eB4a4BF413F5062744417E78B85aAd9fb",
+        "symbolA": "USDC",
+        "symbolB": "WETH"
+      },
+      "USDC-DAI": {
+        "address": "0x1971ec6162768607dfc3584FF8BcF35868a62eBC",
+        "priceA": "0.99987409",
+        "priceB": "0.99982119",
+        "tokenA": "0x63459a2699827c8eED36633e28762dA67C324a19",
+        "tokenB": "0x88cFc12Ee3A233C960a7148229FdF7381792490B",
+        "symbolA": "USDC",
+        "symbolB": "DAI"
+      },
+      "USDC-WBTC": {
+        "address": "0x273Ecda9b6B650Aca72F8c5A8c3b70863adF7A48",
+        "priceA": "0.99987409",
+        "priceB": "118987.6",
+        "tokenA": "0x63459a2699827c8eED36633e28762dA67C324a19",
+        "tokenB": "0xfee200dD015ED18e55B6858fA4E2A7b8394AEA8a",
+        "symbolA": "USDC",
+        "symbolB": "WBTC"
+      },
+      "USDC-ARB": {
+        "address": "0x4F39b8985Bcf1D3B5f9380e5d349dc4C7927b3Ab",
+        "priceA": "0.99987409",
+        "priceB": "0.5243079",
+        "tokenA": "0x63459a2699827c8eED36633e28762dA67C324a19",
+        "tokenB": "0xB845a6dbeb0BEF7882070A242e97da1E434FC1DA",
+        "symbolA": "USDC",
+        "symbolB": "ARB"
+      },
+      "USDC-USDT": {
+        "address": "0x0497f5713Fcc82DC6260A7A5B1AED87F1C077f56",
+        "priceA": "0.99987409",
+        "priceB": "1.00083",
+        "tokenA": "0x63459a2699827c8eED36633e28762dA67C324a19",
+        "tokenB": "0x2094E2C1154293D872aee71CCe5C493374c92b34",
+        "symbolA": "USDC",
+        "symbolB": "USDT"
+      },
       "WETH-DAI": {
-        "address": "0x9DAC889e97C7343c0280f5B327Cc3b83dA1aaF43",
-        "priceA": "3025.14",
-        "priceB": "0.99981847",
-        "tokenA": "0x2b639Cc84e1Ad3aA92D4Ee7d2755A6ABEf300D72",
-        "tokenB": "0x0b27a79cb9C0B38eE06Ca3d94DAA68e0Ed17F953",
+        "address": "0x2ba77fC852623cc3e0e588DfBF5541bb572293A4",
+        "priceA": "4631.67",
+        "priceB": "0.99982119",
+        "tokenA": "0x511a032eB4a4BF413F5062744417E78B85aAd9fb",
+        "tokenB": "0x88cFc12Ee3A233C960a7148229FdF7381792490B",
         "symbolA": "WETH",
         "symbolB": "DAI"
+      },
+      "WETH-WBTC": {
+        "address": "0x2751c14B368064dcf4BeBD225e6EFd95021e5060",
+        "priceA": "4631.67",
+        "priceB": "118987.6",
+        "tokenA": "0x511a032eB4a4BF413F5062744417E78B85aAd9fb",
+        "tokenB": "0xfee200dD015ED18e55B6858fA4E2A7b8394AEA8a",
+        "symbolA": "WETH",
+        "symbolB": "WBTC"
+      },
+      "WETH-ARB": {
+        "address": "0x00Ec30708379aC8DDc9783C1900998F458dC8682",
+        "priceA": "4631.67",
+        "priceB": "0.5243079",
+        "tokenA": "0x511a032eB4a4BF413F5062744417E78B85aAd9fb",
+        "tokenB": "0xB845a6dbeb0BEF7882070A242e97da1E434FC1DA",
+        "symbolA": "WETH",
+        "symbolB": "ARB"
+      },
+      "WETH-USDT": {
+        "address": "0x449a9656669be3800a975b42D5A3E3571728d85C",
+        "priceA": "4631.67",
+        "priceB": "1.00083",
+        "tokenA": "0x511a032eB4a4BF413F5062744417E78B85aAd9fb",
+        "tokenB": "0x2094E2C1154293D872aee71CCe5C493374c92b34",
+        "symbolA": "WETH",
+        "symbolB": "USDT"
+      },
+      "DAI-WBTC": {
+        "address": "0x3c91604D27fA34d7b92dFca981f22357b184fdc2",
+        "priceA": "0.99982119",
+        "priceB": "118987.6",
+        "tokenA": "0x88cFc12Ee3A233C960a7148229FdF7381792490B",
+        "tokenB": "0xfee200dD015ED18e55B6858fA4E2A7b8394AEA8a",
+        "symbolA": "DAI",
+        "symbolB": "WBTC"
+      },
+      "DAI-ARB": {
+        "address": "0x1C6a57024abBDb087B17B1651C9A32b051725Afc",
+        "priceA": "0.99982119",
+        "priceB": "0.5243079",
+        "tokenA": "0x88cFc12Ee3A233C960a7148229FdF7381792490B",
+        "tokenB": "0xB845a6dbeb0BEF7882070A242e97da1E434FC1DA",
+        "symbolA": "DAI",
+        "symbolB": "ARB"
+      },
+      "DAI-USDT": {
+        "address": "0xCe5aB5E8a87B07fcA2903a84c1F1Bc775C4AAc10",
+        "priceA": "0.99982119",
+        "priceB": "1.00083",
+        "tokenA": "0x88cFc12Ee3A233C960a7148229FdF7381792490B",
+        "tokenB": "0x2094E2C1154293D872aee71CCe5C493374c92b34",
+        "symbolA": "DAI",
+        "symbolB": "USDT"
+      },
+      "WBTC-ARB": {
+        "address": "0x2Bc615aC9e9A64356C634E60B4c867684CD9AE63",
+        "priceA": "118987.6",
+        "priceB": "0.5243079",
+        "tokenA": "0xfee200dD015ED18e55B6858fA4E2A7b8394AEA8a",
+        "tokenB": "0xB845a6dbeb0BEF7882070A242e97da1E434FC1DA",
+        "symbolA": "WBTC",
+        "symbolB": "ARB"
+      },
+      "WBTC-USDT": {
+        "address": "0x3253A2C0d12b3554046CD69a51C6565BdfF65953",
+        "priceA": "118987.6",
+        "priceB": "1.00083",
+        "tokenA": "0xfee200dD015ED18e55B6858fA4E2A7b8394AEA8a",
+        "tokenB": "0x2094E2C1154293D872aee71CCe5C493374c92b34",
+        "symbolA": "WBTC",
+        "symbolB": "USDT"
+      },
+      "ARB-USDT": {
+        "address": "0x20e667efbCF8eD4f1F16fe87bD1faAc1520e597E",
+        "priceA": "0.5243079",
+        "priceB": "1.00083",
+        "tokenA": "0xB845a6dbeb0BEF7882070A242e97da1E434FC1DA",
+        "tokenB": "0x2094E2C1154293D872aee71CCe5C493374c92b34",
+        "symbolA": "ARB",
+        "symbolB": "USDT"
+      }
+    },
+    "arbitrum_sepolia": {
+      "USDC-WETH": {
+        "address": "0x210E11B35B7052A9c6E2a5DDEceF300d5aA53ed5",
+        "priceA": "0.99989893",
+        "priceB": "4335.941777",
+        "tokenA": "0x76Ab77117FDa97199f6E7f4Cd1acE39e5Ec9f932",
+        "tokenB": "0xf828427bEb19E4908b88CaB43266e07e3397f52e",
+        "symbolA": "USDC",
+        "symbolB": "WETH"
+      },
+      "USDC-DAI": {
+        "address": "0x7e9C795156Ae9e0BBB52b88911B9f11C6f1Fd1e8",
+        "priceA": "0.99989893",
+        "priceB": "1.0000323",
+        "tokenA": "0x76Ab77117FDa97199f6E7f4Cd1acE39e5Ec9f932",
+        "tokenB": "0x3b49C1d1323f93C01E5b6b6d3aBee6c3Cd187Da8",
+        "symbolA": "USDC",
+        "symbolB": "DAI"
+      },
+      "USDC-WBTC": {
+        "address": "0x72ccB795384B77846eC062e755102ef1F444F2d1",
+        "priceA": "0.99989893",
+        "priceB": "115686.93",
+        "tokenA": "0x76Ab77117FDa97199f6E7f4Cd1acE39e5Ec9f932",
+        "tokenB": "0xcCd80E752528AcA23D92EDa658706F3608C3Ba5a",
+        "symbolA": "USDC",
+        "symbolB": "WBTC"
+      },
+      "USDC-ARB": {
+        "address": "0x6C5C82E82b94980262f83a3Ca04b2A25cFC9EDc5",
+        "priceA": "0.99989893",
+        "priceB": "0.51767",
+        "tokenA": "0x76Ab77117FDa97199f6E7f4Cd1acE39e5Ec9f932",
+        "tokenB": "0xEeB865b76F5CB4899a3F5D759cFb305020e141e6",
+        "symbolA": "USDC",
+        "symbolB": "ARB"
+      },
+      "USDC-USDT": {
+        "address": "0xdF1806C47927AA5E3cFd41551b0B0d3fa53619f1",
+        "priceA": "0.99989893",
+        "priceB": "1.0005637",
+        "tokenA": "0x76Ab77117FDa97199f6E7f4Cd1acE39e5Ec9f932",
+        "tokenB": "0x2757f8450eC84e3CaDDaeA981333F431Cb2E7a16",
+        "symbolA": "USDC",
+        "symbolB": "USDT"
+      },
+      "WETH-DAI": {
+        "address": "0x9938Ac3061C64BF49cc3fe56844b7DB64989f555",
+        "priceA": "4335.941777",
+        "priceB": "1.0000323",
+        "tokenA": "0xf828427bEb19E4908b88CaB43266e07e3397f52e",
+        "tokenB": "0x3b49C1d1323f93C01E5b6b6d3aBee6c3Cd187Da8",
+        "symbolA": "WETH",
+        "symbolB": "DAI"
+      },
+      "WETH-WBTC": {
+        "address": "0xaF41f488B145f0fAEe739143F297e41536C635ba",
+        "priceA": "4335.941777",
+        "priceB": "115686.93",
+        "tokenA": "0xf828427bEb19E4908b88CaB43266e07e3397f52e",
+        "tokenB": "0xcCd80E752528AcA23D92EDa658706F3608C3Ba5a",
+        "symbolA": "WETH",
+        "symbolB": "WBTC"
+      },
+      "WETH-ARB": {
+        "address": "0xB0F36e74879f88231815394aEBd5D3eCD195AbD5",
+        "priceA": "4335.941777",
+        "priceB": "0.51767",
+        "tokenA": "0xf828427bEb19E4908b88CaB43266e07e3397f52e",
+        "tokenB": "0xEeB865b76F5CB4899a3F5D759cFb305020e141e6",
+        "symbolA": "WETH",
+        "symbolB": "ARB"
+      },
+      "WETH-USDT": {
+        "address": "0x1412c8A6E2152Ea7A73066aF37Ba7fc1Efb77667",
+        "priceA": "4335.941777",
+        "priceB": "1.0005637",
+        "tokenA": "0xf828427bEb19E4908b88CaB43266e07e3397f52e",
+        "tokenB": "0x2757f8450eC84e3CaDDaeA981333F431Cb2E7a16",
+        "symbolA": "WETH",
+        "symbolB": "USDT"
+      },
+      "DAI-WBTC": {
+        "address": "0x16fE5b08F677742622Fe559e7A836E979E3D44e2",
+        "priceA": "1.0000323",
+        "priceB": "115686.93",
+        "tokenA": "0x3b49C1d1323f93C01E5b6b6d3aBee6c3Cd187Da8",
+        "tokenB": "0xcCd80E752528AcA23D92EDa658706F3608C3Ba5a",
+        "symbolA": "DAI",
+        "symbolB": "WBTC"
+      },
+      "DAI-ARB": {
+        "address": "0xe355B750eb70bBC6d3f74aBF6Ef60c1165864711",
+        "priceA": "1.0000323",
+        "priceB": "0.51767",
+        "tokenA": "0x3b49C1d1323f93C01E5b6b6d3aBee6c3Cd187Da8",
+        "tokenB": "0xEeB865b76F5CB4899a3F5D759cFb305020e141e6",
+        "symbolA": "DAI",
+        "symbolB": "ARB"
+      },
+      "DAI-USDT": {
+        "address": "0xB7C6C2A2add0397D9cD3F79092fcA5C24c92b29B",
+        "priceA": "1.0000323",
+        "priceB": "1.0005637",
+        "tokenA": "0x3b49C1d1323f93C01E5b6b6d3aBee6c3Cd187Da8",
+        "tokenB": "0x2757f8450eC84e3CaDDaeA981333F431Cb2E7a16",
+        "symbolA": "DAI",
+        "symbolB": "USDT"
+      },
+      "WBTC-ARB": {
+        "address": "0x97C45BcF9C3752bd7bdbD0a84635607030a0cB8a",
+        "priceA": "115686.93",
+        "priceB": "0.51767",
+        "tokenA": "0xcCd80E752528AcA23D92EDa658706F3608C3Ba5a",
+        "tokenB": "0xEeB865b76F5CB4899a3F5D759cFb305020e141e6",
+        "symbolA": "WBTC",
+        "symbolB": "ARB"
+      },
+      "WBTC-USDT": {
+        "address": "0x67CE4f3EBBbD9Ce430019FF3d27e2b169A1b8992",
+        "priceA": "115686.93",
+        "priceB": "1.0005637",
+        "tokenA": "0xcCd80E752528AcA23D92EDa658706F3608C3Ba5a",
+        "tokenB": "0x2757f8450eC84e3CaDDaeA981333F431Cb2E7a16",
+        "symbolA": "WBTC",
+        "symbolB": "USDT"
+      },
+      "ARB-USDT": {
+        "address": "0xB98E1b2D31f177d653f9667640291650008B0D62",
+        "priceA": "0.51767",
+        "priceB": "1.0005637",
+        "tokenA": "0xEeB865b76F5CB4899a3F5D759cFb305020e141e6",
+        "tokenB": "0x2757f8450eC84e3CaDDaeA981333F431Cb2E7a16",
+        "symbolA": "ARB",
+        "symbolB": "USDT"
       }
     }
   },
-  "ARB": {
+  "UniswapV2Factory": {
     "localhost": {
-      "address": "0xB468647B04bF657C9ee2de65252037d781eABafD",
+      "address": "0xAdE429ba898c34722e722415D722A70a297cE3a2",
+      "deployer": "0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266"
+    },
+    "holesky": {
+      "address": "0xc03b2FeFb0fBc6c4Bf5F43F8fb219C2f583b5eC0",
+      "deployer": "0x74D75f13c39014Dd1515758bF66ba46571B73F2E"
+    },
+    "arbitrum_sepolia": {
+      "address": "0x8F8CdDcC3BF0D7025D4b26019FB77D68230591c2",
+      "deployer": "0x74D75f13c39014Dd1515758bF66ba46571B73F2E"
+    }
+  },
+  "UniswapV2Router02": {
+    "localhost": {
+      "address": "0x7B4f352Cd40114f12e82fC675b5BA8C7582FC513",
       "deployer": "0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266",
-      "decimals": 18,
-      "totalSupply": "1184608766844070537461760"
+      "wethAddress": "0x56fC17a65ccFEC6B7ad0aDe9BD9416CB365B9BE8"
+    },
+    "holesky": {
+      "address": "0xA36F7BCF1212E48fc52b114e4e634b0b75Af9DD8",
+      "deployer": "0x74D75f13c39014Dd1515758bF66ba46571B73F2E"
+    },
+    "arbitrum_sepolia": {
+      "address": "0x7E88deAB1395236F65103ff9bBd86d2A7991480d",
+      "deployer": "0x74D75f13c39014Dd1515758bF66ba46571B73F2E"
+    }
+  },
+  "Faucet": {
+    "localhost": {
+      "address": "0xb9bEECD1A582768711dE1EE7B0A1d582D9d72a6C",
+      "deployer": "0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266"
+    },
+    "holesky": {
+      "address": "0x30C510121Fe28824F22bAe2f8CF61c670D4b5289",
+      "deployer": "0x74D75f13c39014Dd1515758bF66ba46571B73F2E"
+    },
+    "arbitrum_sepolia": {
+      "address": "0x71CC1551b6f1141d9D8bc4DC0f0A24cC8eb56D0B",
+      "deployer": "0x74D75f13c39014Dd1515758bF66ba46571B73F2E"
     }
   }
 }

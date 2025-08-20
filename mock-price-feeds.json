@@ -1,38 +1,38 @@
 {
   "ETH_USD": {
-    "address": "0x5FbDB2315678afecb367f032d93F642f64180aa3",
+    "address": "0x38A70c040CA5F5439ad52d0e821063b0EC0B52b6",
     "decimals": 8,
-    "price": "3025.14",
-    "timestamp": 1752472360943
+    "price": "4161.14",
+    "timestamp": 1755690311311
   },
   "USDC_USD": {
-    "address": "0xe7f1725E7734CE288F8367e1Bb143E90bb3F0512",
+    "address": "0x54B8d8E2455946f2A5B8982283f2359812e815ce",
     "decimals": 8,
-    "price": "0.99988129",
-    "timestamp": 1752472360971
+    "price": "0.99992187",
+    "timestamp": 1755690311340
   },
   "DAI_USD": {
-    "address": "0x9fE46736679d2D9a65F0992F2272dE9f3c7fa6e0",
+    "address": "0xf090f16dEc8b6D24082Edd25B1C8D26f2bC86128",
     "decimals": 8,
-    "price": "0.99981847",
-    "timestamp": 1752472361026
+    "price": "0.99984983",
+    "timestamp": 1755690311367
   },
   "WBTC_USD": {
-    "address": "0xCf7Ed3AccA5a467e9e704C703E8D87F634fB0Fc9",
+    "address": "0xd9140951d8aE6E5F625a02F5908535e16e3af964",
     "decimals": 8,
-    "price": "122087.35",
-    "timestamp": 1752472361048
+    "price": "113157.494895",
+    "timestamp": 1755690311445
   },
   "ARB_USD": {
-    "address": "0xDc64a140Aa3E981100a9becA4E685f962f0cF6C9",
+    "address": "0x56D13Eb21a625EdA8438F55DF2C31dC3632034f5",
     "decimals": 8,
-    "price": "0.42208028",
-    "timestamp": 1752472361070
+    "price": "0.48174187",
+    "timestamp": 1755690311474
   },
   "USDT_USD": {
-    "address": "0x5FC8d32690cc91D4c39d9d3abcBD16989F875707",
+    "address": "0xE8addD62feD354203d079926a8e563BC1A7FE81e",
     "decimals": 8,
-    "price": "1.00025",
-    "timestamp": 1752472361093
+    "price": "1.0000721",
+    "timestamp": 1755690311502
   }
 }

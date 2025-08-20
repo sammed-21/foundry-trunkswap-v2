@@ -61,8 +61,9 @@ async function main() {
     }
   }
 
-  // 1. Deploy mock ERC20 tokens with proper decimals
+  // 1. Deploy tokens with special handling for WETH
   const Token = await ethers.getContractFactory("Token");
+  const WETH = await ethers.getContractFactory("WETH"); // 🔥 NEW: WETH contract factory
   const tokenMap = {};
 
   console.log("\n📦 Deploying Tokens...");
@@ -71,36 +72,61 @@ async function main() {
     const decimals = config.decimals;
 
     // Mint a very large supply to ensure enough liquidity
-    // Calculate required supply based on number of pairs and liquidity amount
-    const pairsPerToken = TOKENS.length - 1; // Each token appears in (n-1) pairs
-    const liquidityPerPair = 50000; // $50k per pair
+    const pairsPerToken = TOKENS.length - 1;
+    const liquidityPerPair = 50000;
     const price = parseFloat(mockPrices[getOracleKey(symbol)]?.price || "1");
     const tokensNeededPerPair = liquidityPerPair / price;
-    const totalTokensNeeded = tokensNeededPerPair * pairsPerToken * 3; // 2x buffer
-    const minSupply = Math.max(totalTokensNeeded, 1000000000000); // At least 1M tokens
+    const totalTokensNeeded = tokensNeededPerPair * pairsPerToken * 3;
+    const minSupply = Math.max(totalTokensNeeded, 1000000000000);
 
-    // const totalSupply = ethers.utils.parseUnits(minSupply.toString(), decimals);
     const mintAmountPerToken = {
-      6: "1000000000000", // 1 trillion for 6-decimal tokens
-      8: "100000000000000", // 100 trillion for 8-decimal tokens
-      18: "1000000000000000000000000", // 1 million * 10^18
+      6: "1000000000000",
+      8: "100000000000000", 
+      18: "1000000000000000000000000",
     };
 
     const totalSupply = ethers.BigNumber.from(mintAmountPerToken[decimals]);
 
-    // const totalSupply = ethers.utils.parseUnits("1000000000", decimals); // 1 billion
+    let token;
+    let address;
 
-    console.log(`Total to mint: ${totalSupply.toString()}`);
+    // 🔥 SPECIAL HANDLING FOR WETH
+    if (symbol === "WETH") {
+      console.log(`🔄 Deploying WETH as proper wrapped ether contract...`);
+      
+      // Deploy WETH contract (no constructor parameters needed)
+      token = await WETH.deploy();
+      await token.deployed();
+      address = token.address;
 
-    const token = await Token.deploy(config.name, symbol, totalSupply);
-    await token.deployed();
+      // 🔥 FUND WETH BY DEPOSITING ETH
+      console.log(`💰 Depositing ETH to mint WETH tokens...`);
+      const ethAmountToDeposit = ethers.utils.parseEther("0.2"); // Deposit 1000 ETH to get 1000 WETH
+      
+      const depositTx = await token.deposit({ value: ethAmountToDeposit });
+      await depositTx.wait();
+      
+      console.log(`✅ Deposited ${ethers.utils.formatEther(ethAmountToDeposit)} ETH`);
+      
+      // Check WETH balance
+      const wethBalance = await token.balanceOf(deployer.address);
+      console.log(`✅ WETH Balance: ${ethers.utils.formatEther(wethBalance)}`);
+
+    } else {
+      // 🔄 DEPLOY REGULAR ERC20 TOKENS
+      console.log(`🔄 Deploying ${symbol} as regular ERC20...`);
+      
+      token = await Token.deploy(config.name, symbol, totalSupply);
+      await token.deployed();
+      address = token.address;
+    }
+
     const balance = await token.balanceOf(deployer.address);
     console.log(
       `${symbol} balance:`,
       ethers.utils.formatUnits(balance, decimals)
     );
 
-    const address = token.address;
     const ownerBalance = await token.balanceOf(deployer.address);
     const tokenSymbol = await token.symbol();
     const tokenDecimals = await token.decimals();
@@ -125,7 +151,8 @@ async function main() {
         address,
         deployer: deployer.address,
         decimals: tokenDecimals,
-        totalSupply: totalSupply.toString(),
+        totalSupply: symbol === "WETH" ? "0" : totalSupply.toString(), // WETH supply is dynamic
+        contractType: symbol === "WETH" ? "WETH" : "ERC20", // 🔥 Track contract type
       },
     };
   }
@@ -144,17 +171,19 @@ async function main() {
     },
   };
 
-  // 3. Deploy Router
+  // 3. Deploy Router with WETH address
   const Router = await ethers.getContractFactory("UniswapV2Router02");
-  const router = await Router.deploy(factoryAddress, tokenMap["WETH"].address);
+  const router = await Router.deploy(factoryAddress, tokenMap["WETH"].address); // 🔥 Using proper WETH address
   await router.deployed();
 
   const routerAddress = router.address;
   console.log(`🧭 Router deployed: ${routerAddress}`);
+  console.log(`🔗 Router connected to WETH: ${tokenMap["WETH"].address}`);
   deployData["UniswapV2Router02"] = {
     [netName]: {
       address: routerAddress,
       deployer: deployer.address,
+      wethAddress: tokenMap["WETH"].address, // 🔥 Store WETH reference
     },
   };
 
@@ -189,15 +218,11 @@ async function main() {
     const decimalsA = await tokenA.decimals();
     const decimalsB = await tokenB.decimals();
 
-    // Calculate liquidity amounts - use significant amounts for better trading
-    // Base amount in USD terms (e.g., $50,000 worth of each token)
-    const baseLiquidityUSD = 50000;
-
-    // Calculate token amounts based on USD value
+    // Calculate liquidity amounts
+    const baseLiquidityUSD = symbolA ;
     const amountAInTokens = baseLiquidityUSD / priceA;
     const amountBInTokens = baseLiquidityUSD / priceB;
 
-    // Convert to proper decimal format
     const amountADesired = ethers.utils.parseUnits(
       amountAInTokens.toFixed(decimalsA),
       decimalsA
@@ -206,113 +231,65 @@ async function main() {
       amountBInTokens.toFixed(decimalsB),
       decimalsB
     );
-    const balanceA_ = await tokenA.balanceOf(deployer.address);
-    const balanceB_ = await tokenB.balanceOf(deployer.address);
-    console.warn(
-      `   ${symbolA} balance: ${ethers.utils.formatUnits(
-        balanceA_,
-        decimalsA
-      )} required: ${ethers.utils.formatUnits(amountADesired, decimalsA)}`
-    );
-    console.warn(
-      `   ${symbolB} balance: ${ethers.utils.formatUnits(
-        balanceB_,
-        decimalsB
-      )} required: ${ethers.utils.formatUnits(amountBDesired, decimalsB)}`
-    );
 
     console.log(`   Amount A: ${amountAInTokens.toFixed(6)} ${symbolA}`);
     console.log(`   Amount B: ${amountBInTokens.toFixed(6)} ${symbolB}`);
-    console.log(
-      `   Price ratio: 1 ${symbolA} = ${(priceA / priceB).toFixed(
-        8
-      )} ${symbolB}`
-    );
 
-    // Check balances
+    // Check and ensure sufficient balances
     const balanceA = await tokenA.balanceOf(deployer.address);
     const balanceB = await tokenB.balanceOf(deployer.address);
-    console.warn(
-      `   ${symbolA} balance: ${ethers.utils.formatUnits(
-        balanceA,
-        decimalsA
-      )} required: ${ethers.utils.formatUnits(amountADesired, decimalsA)}`
+    
+    console.log(
+      `   ${symbolA} balance: ${ethers.utils.formatUnits(balanceA, decimalsA)} required: ${ethers.utils.formatUnits(amountADesired, decimalsA)}`
     );
-    console.warn(
-      `   ${symbolB} balance: ${ethers.utils.formatUnits(
-        balanceB,
-        decimalsB
-      )} required: ${ethers.utils.formatUnits(amountBDesired, decimalsB)}`
+    console.log(
+      `   ${symbolB} balance: ${ethers.utils.formatUnits(balanceB, decimalsB)} required: ${ethers.utils.formatUnits(amountBDesired, decimalsB)}`
     );
     
-    if (balanceA.lt(amountADesired) || balanceB.lt(amountBDesired)) {
- 
-       
-      console.warn(`⚠️ Skipping ${symbolA}-${symbolB}: insufficient balance`);
-      console.warn(
-        `   ${symbolA} balance: ${ethers.utils.formatUnits(
-          balanceA,
-          decimalsA
-        )} required: ${ethers.utils.formatEther(amountADesired)}`
-      );
-      console.warn(
-        `   ${symbolB} balance: ${ethers.utils.formatUnits(
-          balanceB,
-          decimalsB
-        )} required: ${ethers.utils.formatEther(amountBDesired)}`
-      );
-      // Check balances
-      const balanceA_ = await tokenA.balanceOf(deployer.address);
-      const balanceB_ = await tokenB.balanceOf(deployer.address);
-
-      const missingA = amountADesired.sub(balanceA);
-      const missingB = amountBDesired.sub(balanceB);
-      const extraAAmount = ethers.utils.parseUnits("10000", await tokenA.decimals()); // assuming both tokens have same decimals, or handle separately
-      const extraBAmount = ethers.utils.parseUnits("10000", await tokenB.decimals()); // assuming both tokens have same decimals, or handle separately
-
-if (balanceA_.lt(amountADesired)) {
-  const mintAmountA = missingA.add(extraAAmount); // Add extra 10,000
-
-  console.warn(
-    `⚠️ Minting ${symbolA}: missing ${ethers.utils.formatEther(missingA)} (+ extra 10000)`
-  );
-
-  const mintTxA = await tokenA.connect(deployer).mint(mintAmountA);
-  await mintTxA.wait();
-}
-
-if (balanceB_.lt(amountBDesired)) {
-  const mintAmountB = missingB.add(extraBAmount); // Add extra 10,000
-
-  console.warn(
-    `⚠️ Minting ${symbolB}: missing ${ethers.utils.formatEther(missingB)} (+ extra 10000)`
-  );
-
-  const mintTxB = await tokenB.connect(deployer).mint(mintAmountB);
-  await mintTxB.wait();
-}
-
-      // if (balanceA_.lt(amountADesired)) {
-      //   console.warn(
-      //     `⚠️ Minting ${symbolA}: missing ${ethers.utils.formatEther(
-      //       missingA,
-      //     )}`
-      //   );
-      //   const mintTxA = await tokenA.connect(deployer).mint(missingA);
-      //   await mintTxA.wait();
-      // }
-
-      // if (balanceB_.lt(amountBDesired)) {
-      //   console.warn(
-      //     `⚠️ Minting ${symbolB}: missing ${ethers.utils.formatEther(
-      //       missingB,
-     
-      //     )}`
-      //   );
-      //   const mintTxB = await tokenB.connect(deployer).mint(missingB);
-      //   await mintTxB.wait();
-      // }
+    // 🔥 HANDLE INSUFFICIENT WETH BALANCE
+    if (symbolA === "WETH" && balanceA.lt(amountADesired)) {
+      const missingWETH = amountADesired.sub(balanceA);
+      const extraWETH = ethers.utils.parseEther("100"); // Extra 100 WETH
+      const totalETHNeeded = missingWETH.add(extraWETH);
+      
+      console.log(`💰 Depositing ${ethers.utils.formatEther(totalETHNeeded)} ETH to get more WETH...`);
+      const depositTx = await tokenA.deposit({ value: totalETHNeeded });
+      await depositTx.wait();
+      console.log(`✅ WETH balance increased`);
     }
+    
+    if (symbolB === "WETH" && balanceB.lt(amountBDesired)) {
+      const missingWETH = amountBDesired.sub(balanceB);
+      const extraWETH = ethers.utils.parseEther("100"); // Extra 100 WETH
+      const totalETHNeeded = missingWETH.add(extraWETH);
+      
+      console.log(`💰 Depositing ${ethers.utils.formatEther(totalETHNeeded)} ETH to get more WETH...`);
+      const depositTx = await tokenB.deposit({ value: totalETHNeeded });
+      await depositTx.wait();
+      console.log(`✅ WETH balance increased`);
+    }
+
+    // Handle regular token minting
+    if (symbolA !== "WETH" && balanceA.lt(amountADesired)) {
+      const missingA = amountADesired.sub(balanceA);
+      const extraAAmount = ethers.utils.parseUnits("0.05", decimalsA);
+      const mintAmountA = missingA.add(extraAAmount);
+
+      console.log(`⚠️ Minting ${symbolA}: missing ${ethers.utils.formatUnits(missingA, decimalsA)} (+ extra 10000)`);
+      const mintTxA = await tokenA.connect(deployer).mint(mintAmountA);
+      await mintTxA.wait();
+    }
+
+    if (symbolB !== "WETH" && balanceB.lt(amountBDesired)) {
+      const missingB = amountBDesired.sub(balanceB);
+      const extraBAmount = ethers.utils.parseUnits("10000", decimalsB);
+      const mintAmountB = missingB.add(extraBAmount);
+
+      console.log(`⚠️ Minting ${symbolB}: missing ${ethers.utils.formatUnits(missingB, decimalsB)} (+ extra 10000)`);
+      const mintTxB = await tokenB.connect(deployer).mint(mintAmountB);
+      await mintTxB.wait();
+    }
+
     // Approve tokens
     console.log(`   Approving tokens...`);
     await (await tokenA.approve(routerAddress, amountADesired)).wait();
@@ -320,8 +297,7 @@ if (balanceB_.lt(amountBDesired)) {
 
     // Add liquidity with proper slippage protection
     try {
-      const deadline =
-        (await ethers.provider.getBlock("latest")).timestamp + 600; // 10 minutes
+      const deadline = (await ethers.provider.getBlock("latest")).timestamp + 600;
 
       console.log(`   Adding liquidity...`);
       const tx = await router.addLiquidity(
@@ -385,16 +361,10 @@ if (balanceB_.lt(amountBDesired)) {
         }
 
         console.log(
-          `   ${symbol0} Reserve: ${ethers.utils.formatUnits(
-            reserve0,
-            decimals0
-          )}`
+          `   ${symbol0} Reserve: ${ethers.utils.formatUnits(reserve0, decimals0)}`
         );
         console.log(
-          `   ${symbol1} Reserve: ${ethers.utils.formatUnits(
-            reserve1,
-            decimals1
-          )}`
+          `   ${symbol1} Reserve: ${ethers.utils.formatUnits(reserve1, decimals1)}`
         );
 
         // Calculate pool prices safely
@@ -475,14 +445,27 @@ if (balanceB_.lt(amountBDesired)) {
   console.log(`Network: ${netName}`);
   console.log(`Factory: ${factoryAddress}`);
   console.log(`Router: ${routerAddress}`);
+  console.log(`WETH: ${tokenMap["WETH"].address} (Proper WETH Contract)`); // 🔥 Highlight WETH
   console.log(
     `Pairs created: ${Object.keys(deployData["Pairs"]?.[netName] || {}).length}`
   );
 
   console.log("\nToken Addresses:");
   for (const symbol of TOKENS) {
-    console.log(`${symbol}: ${deployData[symbol][netName].address}`);
+    const contractType = symbol === "WETH" ? "(WETH Contract)" : "(ERC20 Token)";
+    console.log(`${symbol}: ${deployData[symbol][netName].address} ${contractType}`);
   }
+
+  // 🔥 ADDITIONAL WETH INFO
+  console.log("\n🎯 WETH CONTRACT VERIFICATION:");
+  const wethContract = tokenMap["WETH"];
+  const wethBalance = await wethContract.balanceOf(deployer.address);
+  const contractETHBalance = await ethers.provider.getBalance(wethContract.address);
+  
+  console.log(`WETH Balance: ${ethers.utils.formatEther(wethBalance)}`);
+  console.log(`Contract ETH Balance: ${ethers.utils.formatEther(contractETHBalance)}`);
+  console.log(`Total Supply: ${ethers.utils.formatEther(await wethContract.totalSupply())}`);
+  console.log("✅ WETH is ready for router operations!");
 }
 
 main().catch((err) => {

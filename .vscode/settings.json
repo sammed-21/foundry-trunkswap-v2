@@ -1,7 +1,8 @@
 {
-    "wake.compiler.solc.remappings": [
-        "@ensdomains/=node_modules/@ensdomains/",
-        "@openzeppelin/=node_modules/@openzeppelin/",
-        "hardhat/=node_modules/hardhat/"
-    ]
+  "wake.compiler.solc.remappings": [
+    "@ensdomains/=node_modules/@ensdomains/",
+    "@openzeppelin/=node_modules/@openzeppelin/",
+    "hardhat/=node_modules/hardhat/"
+  ],
+  "solidity.compileUsingRemoteVersion": "v0.8.13+commit.abaa5c0e"
 }
